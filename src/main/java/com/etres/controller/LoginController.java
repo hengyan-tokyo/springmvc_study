@@ -2,17 +2,15 @@ package com.etres.controller;
 
 import java.util.Map;
 
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.etres.ErrorMsg;
 
 @Controller
-//@SessionAttributes(names="error")
 public class LoginController {
 	
 	@RequestMapping(path="login",method=RequestMethod.POST)
@@ -23,15 +21,15 @@ public class LoginController {
 		System.out.println("username"+username);
 		System.out.println("password"+password);
 		
-		if(username.equalsIgnoreCase("xiaoming") && password.equals("123456")) {
+		if( StringUtils.isNotBlank(username) && "123456".equals(password)) {
 			// /webapp/jsp/list.jsp
-			return "list2";
+			return "redirect:/list";
 		}else {
 			ErrorMsg errorMsg = new ErrorMsg();
-			errorMsg.setMsg("password error");
+			errorMsg.setMsg("用户名或密码错误");
 			errorMsg.setMsgId("1000");
 			map.put("error", errorMsg);
-			return "index";
+			return "login";
 		}
 		
 	}

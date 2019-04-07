@@ -34,7 +34,9 @@ public class MyWebConfig implements WebMvcConfigurer {
 	
 	@Override
 	public void addViewControllers(ViewControllerRegistry registry) {
-		registry.addViewController("/").setViewName("index");
+		registry.addViewController("/").setViewName("login");
+		registry.addViewController("/index.jsp").setViewName("login");
+		registry.addViewController("list").setViewName("list");
 	}
 
 }
