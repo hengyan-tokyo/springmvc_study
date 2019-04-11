@@ -23,7 +23,7 @@ public class LoginController {
 		
 		if( StringUtils.isNotBlank(username) && "123456".equals(password)) {
 			// /webapp/jsp/list.jsp
-			return "redirect:/list";
+			return "list";
 		}else {
 			ErrorMsg errorMsg = new ErrorMsg();
 			errorMsg.setMsg("用户名或密码错误");
