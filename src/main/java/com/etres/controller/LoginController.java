@@ -7,9 +7,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.etres.ErrorMsg;
 
+@SessionAttributes(value= {"user"})
 @Controller
 public class LoginController {
 	
@@ -23,7 +25,8 @@ public class LoginController {
 		
 		if( StringUtils.isNotBlank(username) && "123456".equals(password)) {
 			// /webapp/jsp/list.jsp
-			return "redirect:/list";
+			map.put("user", username);
+			return "redirect:/emps";
 		}else {
 			ErrorMsg errorMsg = new ErrorMsg();
 			errorMsg.setMsg("用户名或密码错误");

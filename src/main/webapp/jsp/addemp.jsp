@@ -1,7 +1,8 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
-<!-- saved from url=(0052)http://getbootstrap.com/docs/4.0/examples/dashboard/ -->
 <html lang="en">
-
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -75,25 +76,25 @@
 
 				<main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
 					<!--需要区分是员工修改还是添加；-->
-					<form method="post" action="list.html">
+					<form method="post" action="emp">
 						<!--发送put请求修改员工数据-->
 						<!--
-						1、SpringMVC中配置HiddenHttpMethodFilter;（SpringBoot自动配置好的）
+						1、SpringMVC中配置HiddenHttpMethodFilter;
 						2、页面创建一个post表单
 						3、创建一个input项，name="_method";值就是我们指定的请求方式
 						-->
 						<input type="hidden" name="_method" value="put"/>
 						<input type="hidden" name="id">
 						<div class="form-group">
-							<label>姓名</label>
+							<label>lastName</label>
 							<input name="lastName" type="text" class="form-control" placeholder="zhangsan">
 						</div>
 						<div class="form-group">
-							<label>邮件</label>
-							<input name="email" type="email" class="form-control" placeholder="zhangsan@atguigu.com">
+							<label>Email</label>
+							<input name="email" type="email" class="form-control" placeholder="zhangsan@163.com">
 						</div>
 						<div class="form-group">
-							<label>性别</label><br/>
+							<label>Gender</label><br/>
 							<div class="form-check form-check-inline">
 								<input class="form-check-input" type="radio" name="gender" value="1">
 								<label class="form-check-label">男</label>
@@ -104,10 +105,10 @@
 							</div>
 						</div>
 						<div class="form-group">
-							<label>生日</label>
-							<input name="birth" type="text" class="form-control" placeholder="zhangsan">
+							<label>Birth</label>
+							<input name="birth" type="text" class="form-control" placeholder="2000-01-01">
 						</div>
-						<button type="submit" class="btn btn-primary">添加</button>
+						<button type="submit" class="btn btn-primary">添加 </button>
 					</form>
 				</main>
 			</div>
