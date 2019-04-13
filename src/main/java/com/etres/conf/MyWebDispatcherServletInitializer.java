@@ -1,10 +1,10 @@
 package com.etres.conf;
 
 import javax.servlet.Filter;
-import javax.servlet.ServletContext;
-import javax.servlet.FilterRegistration.Dynamic;
+import javax.servlet.FilterConfig;
 
 import org.springframework.web.filter.CharacterEncodingFilter;
+import org.springframework.web.filter.HiddenHttpMethodFilter;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
 public class MyWebDispatcherServletInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
@@ -28,7 +28,8 @@ public class MyWebDispatcherServletInitializer extends AbstractAnnotationConfigD
 	protected Filter[] getServletFilters() {
 
 		CharacterEncodingFilter characterEncodingFilter = new CharacterEncodingFilter("UTF8", true);
-		return new Filter[] { characterEncodingFilter };
+		HiddenHttpMethodFilter hiddenHttpMethodFilter = new HiddenHttpMethodFilter();
+		return new Filter[] { characterEncodingFilter,hiddenHttpMethodFilter};
 	}
 
 }

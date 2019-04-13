@@ -104,8 +104,12 @@
 								     <td>${emp.email }</td>
 								     <td><fmt:formatDate value="${emp.birth }" pattern="yyyy年MM月dd日"/>  </td>
 								     <td>
-										<a class="btn btn-sm btn-primary" href="/emp/${emp.id }">编辑</a>
-										<button class="btn btn-sm btn-danger deleteBtn" >删除</button>
+										<a class="btn btn-sm btn-primary" href="emp/${emp.id }">编辑</a>
+										<form method="post" action="emp/${emp.id }">
+					                        <input type="hidden" name="_method" value="delete"/>
+					                        <button type="submit" class="btn btn-sm btn-danger deleteBtn">删除</button>
+				                        </form>
+										
 									 </td>
 								   </tr>
 								</c:forEach>
