@@ -90,8 +90,11 @@
 						2、页面创建一个post表单
 						3、创建一个input项，name="_method";值就是我们指定的请求方式
 						-->
-						<input type="hidden" name="_method" value="put"/>
-						<input type="hidden" name="id" value="${emp.id }">
+						<c:if test="${not empty emp }">
+						    <input type="hidden" name="_method" value="put"/>
+						    <input type="hidden" name="id" value="${emp.id }">						
+						</c:if>
+
 						<div class="form-group">
 							<label>lastName</label>
 							<input name="lastName" type="text" class="form-control" placeholder="zhangsan" value="${emp.lastName }">
