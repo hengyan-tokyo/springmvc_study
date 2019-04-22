@@ -1,8 +1,5 @@
 package com.etres;
 
-import com.oracle.webservices.internal.api.databinding.DatabindingMode;
-
-
 public class ErrorMsg {
 	
 	private String msg;

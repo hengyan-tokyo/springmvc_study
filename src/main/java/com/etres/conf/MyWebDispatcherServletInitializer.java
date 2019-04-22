@@ -1,7 +1,6 @@
 package com.etres.conf;
 
 import javax.servlet.Filter;
-import javax.servlet.FilterConfig;
 
 import org.springframework.web.filter.CharacterEncodingFilter;
 import org.springframework.web.filter.HiddenHttpMethodFilter;
