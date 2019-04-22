@@ -36,7 +36,12 @@ public class MyWebConfig implements WebMvcConfigurer {
 	public void addViewControllers(ViewControllerRegistry registry) {
 		registry.addViewController("/").setViewName("login");
 		registry.addViewController("/index.jsp").setViewName("login");
-		registry.addViewController("list").setViewName("list");
 	}
+	
+//	@Override
+//	public void addInterceptors(InterceptorRegistry registry) {
+//		registry.addInterceptor(new MyInterceptor()).excludePathPatterns("/","/index.jsp","login");
+//	}
+	
 
 }

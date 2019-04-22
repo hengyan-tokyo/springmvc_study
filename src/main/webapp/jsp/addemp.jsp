@@ -1,12 +1,20 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
-<!-- saved from url=(0052)http://getbootstrap.com/docs/4.0/examples/dashboard/ -->
 <html lang="en">
-
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 		<meta name="description" content="">
 		<meta name="author" content="">
+		
+		<%  
+          String path = request.getContextPath();  
+          String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";  
+        %>  
+        <base href="<%=basePath%>">
 
 		<title>Add Employee</title>
 		<!-- Bootstrap core CSS -->
@@ -75,39 +83,47 @@
 
 				<main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
 					<!--需要区分是员工修改还是添加；-->
-					<form method="post" action="list.html">
+					<form method="post" action="emp">
 						<!--发送put请求修改员工数据-->
 						<!--
-						1、SpringMVC中配置HiddenHttpMethodFilter;（SpringBoot自动配置好的）
+						1、SpringMVC中配置HiddenHttpMethodFilter;
 						2、页面创建一个post表单
 						3、创建一个input项，name="_method";值就是我们指定的请求方式
 						-->
-						<input type="hidden" name="_method" value="put"/>
-						<input type="hidden" name="id">
+						<c:if test="${not empty emp }">
+						    <input type="hidden" name="_method" value="put"/>
+						    <input type="hidden" name="id" value="${emp.id }">						
+						</c:if>
+
 						<div class="form-group">
-							<label>姓名</label>
-							<input name="lastName" type="text" class="form-control" placeholder="zhangsan">
+							<label>lastName</label>
+							<input name="lastName" type="text" class="form-control" placeholder="zhangsan" value="${emp.lastName }">
 						</div>
 						<div class="form-group">
-							<label>邮件</label>
-							<input name="email" type="email" class="form-control" placeholder="zhangsan@atguigu.com">
+							<label>Email</label>
+							<input name="email" type="email" class="form-control" placeholder="zhangsan@163.com" value="${emp.email }">
 						</div>
 						<div class="form-group">
-							<label>性别</label><br/>
+							<label>Gender</label><br/>
 							<div class="form-check form-check-inline">
-								<input class="form-check-input" type="radio" name="gender" value="1">
+								<input class="form-check-input" type="radio" name="gender" ${emp.gender==1 ? 'checked':''} value="1" >
 								<label class="form-check-label">男</label>
 							</div>
 							<div class="form-check form-check-inline">
-								<input class="form-check-input" type="radio" name="gender" value="0">
+								<input class="form-check-input" type="radio" name="gender" ${emp.gender==0 ? 'checked':''} value="0">
 								<label class="form-check-label">女</label>
 							</div>
 						</div>
 						<div class="form-group">
-							<label>生日</label>
-							<input name="birth" type="text" class="form-control" placeholder="zhangsan">
+							<label>Birth</label>
+							<input name="birth" type="text" class="form-control" placeholder="2000-01-01" value='<fmt:formatDate value="${emp.birth }" pattern="yyyy-MM-dd" />'>
 						</div>
-						<button type="submit" class="btn btn-primary">添加</button>
+						<c:if test="${not empty emp }">
+						   <button type="submit" class="btn btn-primary">修改 </button>
+						</c:if>
+						<c:if test="${empty emp }">
+						   <button type="submit" class="btn btn-primary">添加 </button>
+						</c:if>
 					</form>
 				</main>
 			</div>
